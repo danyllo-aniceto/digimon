@@ -1,7 +1,14 @@
+import { BaseLayout } from './components/BaseLayout';
+import { Dashboard } from './pages/Dashboard';
+import { GlobalStyle } from './styles/global';
+
 function App() {
   return (
     <>
-      <span>teste 3</span>
+      <GlobalStyle />
+      <BaseLayout>
+        <Dashboard />
+      </BaseLayout>
     </>
   );
 }
