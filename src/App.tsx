@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <span>teste</span>
+      <span>teste 2</span>
     </>
   );
 }
