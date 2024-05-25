@@ -26,7 +26,7 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   display: flex;
   position: relative;
 `;
@@ -38,4 +38,9 @@ export const Img = styled.img`
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
+`;
+
+export const Button = styled.button`
+  background: transparent;
+  border: none;
 `;
