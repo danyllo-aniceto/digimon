@@ -1,4 +1,3 @@
-export interface ICardProps {
-  name: string;
-  img: string;
-}
+import { IDigimon } from '../../models/IDigimon';
+
+export interface ICardProps extends IDigimon {}

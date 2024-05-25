@@ -16,7 +16,7 @@ import {
 } from './styles';
 import { ModalProps } from './types';
 
-function Modal({ onClose }: ModalProps) {
+function Modal({ onClose, digimon: { img, level, name } }: ModalProps) {
   const handleWrapperClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -26,17 +26,17 @@ function Modal({ onClose }: ModalProps) {
     <ModalWrapper onClick={handleWrapperClick}>
       <ModalContent>
         <TopModal>
-          <Name>BOTAMON</Name>
+          <Name>{name}</Name>
           <CloseButton onClick={onClose}>
             <img src={IMAGES.close} alt="close modal" color="rgba(156, 156, 156, 1)" />
           </CloseButton>
         </TopModal>
         <ContentModal>
-          <ImageModal src={IMAGES.botamon} />
+          <ImageModal src={img} alt={name} />
           <DescriptionModal>
             <LevelDigimon>
               <BluePoint />
-              <NameLevel>Fresh</NameLevel>
+              <NameLevel>{level}</NameLevel>
             </LevelDigimon>
             <Description>
               <Span>Descrição: </Span>Lorem ipsum dolor sit, amet consectetur adipisicing elit.

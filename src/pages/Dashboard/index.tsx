@@ -41,7 +41,9 @@ export function Dashboard() {
         {loading ? (
           <Loading />
         ) : (
-          allDigimons.map(item => <Card key={item.name} img={item.img} name={item.name} />)
+          allDigimons.map(({ img, level, name }) => (
+            <Card key={name} img={img} name={name} level={level} />
+          ))
         )}
       </CardContainer>
     </Body>

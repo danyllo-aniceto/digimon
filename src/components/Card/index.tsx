@@ -3,7 +3,9 @@ import { Button, DigimonCard, DigimonImage, DigimonName } from './styles';
 import Modal from './../Modal';
 import { ICardProps } from './types';
 
-export function Card({ name, img }: ICardProps) {
+export function Card(digimon: ICardProps) {
+  const { name, img } = digimon;
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleToggleModal = () => {
@@ -17,7 +19,7 @@ export function Card({ name, img }: ICardProps) {
         <DigimonImage src={img} alt="Digimon" />
         <Button onClick={handleToggleModal}>Ver detalhes</Button>
       </DigimonCard>
-      {modalOpen && <Modal onClose={handleToggleModal} />}
+      {modalOpen && <Modal onClose={handleToggleModal} digimon={digimon} />}
     </div>
   );
 }
