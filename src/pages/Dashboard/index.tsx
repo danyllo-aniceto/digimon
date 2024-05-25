@@ -1,21 +1,23 @@
 import { Body, ButtonContainer, CardContainer, Wrapper } from './styles';
 
-import { InputSearch } from '../../components/InputSearch';
+import { useEffect } from 'react';
 import { IMAGES } from '../../assets';
 import { Button } from '../../components/Button';
-import { Card } from '../../components/Card';
-import { useEffect } from 'react';
+import { InputSearch } from '../../components/InputSearch';
 import { useDigimon } from '../../hooks/services/Digimon/useDigimon';
-import { Loading } from '../../components/Loading';
+import { DigimonList } from './components/DigimonList';
 
 export function Dashboard() {
-  const { allDigimons, loading, getAllDigimons } = useDigimon();
+  const { allDigimons, loading, getAllDigimons, getDigimonByName } = useDigimon();
 
-  const handleSearch = (value: string) => {
-    console.log('buscar na api', value);
+  const handleSearch = (value: string | undefined) => {
+    console.log('value', value);
+    if (value) {
+      getDigimonByName(value);
+    } else {
+      getAllDigimons();
+    }
   };
-
-  console.log('allDigimons', allDigimons);
 
   useEffect(() => {
     getAllDigimons();
@@ -38,13 +40,7 @@ export function Dashboard() {
         </ButtonContainer>
       </Wrapper>
       <CardContainer>
-        {loading ? (
-          <Loading />
-        ) : (
-          allDigimons.map(({ img, level, name }) => (
-            <Card key={name} img={img} name={name} level={level} />
-          ))
-        )}
+        <DigimonList allDigimons={allDigimons} loading={loading} />
       </CardContainer>
     </Body>
   );

@@ -10,9 +10,8 @@ export const InputSearch = ({ onClickSearch, ...restInput }: IInputProps) => {
     e.preventDefault();
 
     const value = valueRef.current?.value;
-    if (value) {
-      onClickSearch(value);
-    }
+
+    onClickSearch(value);
   };
 
   return (
