@@ -1,8 +1,9 @@
-import { Body, ButtonContainer, Wrapper } from './styles';
+import { Body, ButtonContainer, CardContainer, Wrapper } from './styles';
 
 import { Input } from '../../components/Input';
 import { IMAGES } from '../../assets';
 import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
 
 export function Dashboard() {
   return (
@@ -20,6 +21,21 @@ export function Dashboard() {
           <Button onClick={() => console.log('clicou')}>Test</Button>
         </ButtonContainer>
       </Wrapper>
+      <CardContainer>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </CardContainer>
     </Body>
   );
 }

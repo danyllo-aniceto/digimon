@@ -9,17 +9,15 @@ export const StyledInput = styled.input`
   background-color: rgba(217, 217, 217, 0.5);
 
   font-weight: 400;
-  font-family: 'Inter', sans-serif;
-  font-size: 26px;
+  font-size: 25px;
   line-height: 30.26px;
-  text-indent: 20px;
+  text-indent: 16px;
 
   :focus {
     outline: 0;
   }
 
   ::placeholder {
-    font-family: Inter;
     font-size: 25px;
     font-weight: 400;
     line-height: 30.26px;
@@ -37,6 +35,7 @@ export const Img = styled.img`
   position: absolute;
   width: 26px;
   height: 26px;
-  right: 10px;
-  top: 25%;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
 `;
