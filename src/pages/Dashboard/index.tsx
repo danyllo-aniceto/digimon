@@ -4,11 +4,23 @@ import { InputSearch } from '../../components/InputSearch';
 import { IMAGES } from '../../assets';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
+import { useEffect } from 'react';
+import { useDigimon } from '../../hooks/services/Digimon/useDigimon';
+import { Loading } from '../../components/Loading';
 
 export function Dashboard() {
+  const { allDigimons, loading, getAllDigimons } = useDigimon();
+
   const handleSearch = (value: string) => {
     console.log('buscar na api', value);
   };
+
+  console.log('allDigimons', allDigimons);
+
+  useEffect(() => {
+    getAllDigimons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Body>
@@ -26,19 +38,11 @@ export function Dashboard() {
         </ButtonContainer>
       </Wrapper>
       <CardContainer>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {loading ? (
+          <Loading />
+        ) : (
+          allDigimons.map(item => <Card key={item.name} img={item.img} name={item.name} />)
+        )}
       </CardContainer>
     </Body>
   );
