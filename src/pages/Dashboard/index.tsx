@@ -8,7 +8,8 @@ import { useDigimon } from '../../hooks/services/Digimon/useDigimon';
 import { DigimonList } from './components/DigimonList';
 
 export function Dashboard() {
-  const { allDigimons, loading, getAllDigimons, getDigimonByName } = useDigimon();
+  const { allDigimons, loading, levels, getAllDigimons, getDigimonByName, getAllDigimonByLevel } =
+    useDigimon();
 
   const handleSearch = (value: string | undefined) => {
     console.log('value', value);
@@ -30,13 +31,12 @@ export function Dashboard() {
       <Wrapper>
         <InputSearch onClickSearch={handleSearch} placeholder="Busca" />
         <ButtonContainer>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
-          <Button onClick={() => console.log('clicou')}>Test</Button>
+          <Button onClick={getAllDigimons}>Todos</Button>
+          {levels.map(level => (
+            <Button key={level} onClick={() => getAllDigimonByLevel(level)}>
+              {level}
+            </Button>
+          ))}
         </ButtonContainer>
       </Wrapper>
       <CardContainer>

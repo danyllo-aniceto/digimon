@@ -61,6 +61,8 @@ export const ImageModal = styled.img`
   width: 363px;
   height: 363px;
   top: -250px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 export const DescriptionModal = styled.div`
