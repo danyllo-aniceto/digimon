@@ -30,5 +30,6 @@ Frontend App em ReactJS. Plataforma web responsiva para busca de personagens do 
 
 - Execute `$ npm i` para instalar todas as dependencias.
 - Crie um arquivo `.env` e preencha as informações de cada variável de ambiente, as variáveis para serem preenchidas se encontram no arquivo `env.example`.
+- No valor da variável ambiente `VITE_API_URL` é necessário colocar o link da api de digimons: `https://digimon-api.vercel.app` 
 - Após todas as dependencias serem instaladas e as variáveis serem preenchidas, basta executar `npm run dev` para iniciar a interface frontend.
 
