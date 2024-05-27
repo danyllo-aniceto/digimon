@@ -8,7 +8,7 @@
     <a href="#user-content-clipboard-instruções">Instruções</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
-<img alt="Interface" src="./src/assets/png/digimonPage" width="100%" align="center">
+<img alt="Interface" src="./src/assets/png/digimonPage.png" width="100%" align="center">
 <br/>
 
 ## 💻 Projeto
