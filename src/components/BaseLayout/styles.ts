@@ -3,5 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background: linear-gradient(360deg, rgba(0, 140, 199, 0.5) 0%, rgba(0, 18, 63, 0.5) 100%);
+  height: 100vh;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  padding: 50px 16px;
+  background: ${({ theme }) => theme.colors.BG_GRADIENT};
 `;

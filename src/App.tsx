@@ -1,15 +1,13 @@
-import { BaseLayout } from './components/BaseLayout';
+import { ThemeProvider } from 'styled-components';
 import { Dashboard } from './pages/Dashboard';
-import { GlobalStyle } from './styles/global';
+import { GlobalStyle, theme } from './styles/global';
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={{ ...theme }}>
       <GlobalStyle />
-      <BaseLayout>
-        <Dashboard />
-      </BaseLayout>
-    </>
+      <Dashboard />
+    </ThemeProvider>
   );
 }
 

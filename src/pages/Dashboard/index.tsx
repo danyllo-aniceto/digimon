@@ -1,47 +1,67 @@
-import { Body, ButtonContainer, CardContainer, Wrapper } from './styles';
+import { ButtonContainer, CardContainer, Img, Wrapper } from './styles';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IMAGES } from '../../assets';
-import { Button } from '../../components/Button';
+import { BaseLayout } from '../../components/BaseLayout';
 import { InputSearch } from '../../components/InputSearch';
 import { useDigimon } from '../../hooks/services/Digimon/useDigimon';
 import { DigimonList } from './components/DigimonList';
+import { LevelList } from './components/LevelList';
 
 export function Dashboard() {
-  const { allDigimons, loading, levels, getAllDigimons, getDigimonByName, getAllDigimonByLevel } =
+  const { allDigimons, listLevels, loading, getAllDigimons, getDigimonByName, getDigimonsByLevel } =
     useDigimon();
 
-  const handleSearch = (value: string | undefined) => {
-    console.log('value', value);
-    if (value) {
-      getDigimonByName(value);
-    } else {
-      getAllDigimons();
-    }
-  };
+  const [levelSelected, setLevelSelected] = useState('Todos');
+
+  const handleSearch = useCallback(
+    (value: string | undefined) => {
+      if (value) {
+        getDigimonByName(value);
+        setLevelSelected('');
+      } else {
+        getAllDigimons();
+        setLevelSelected('Todos');
+      }
+    },
+    [getAllDigimons, getDigimonByName],
+  );
+
+  const handleClickLevel = useCallback(
+    (level: string) => {
+      if (level === 'Todos') {
+        getAllDigimons();
+      } else {
+        getDigimonsByLevel(level);
+      }
+      setLevelSelected(level);
+    },
+    [getAllDigimons, getDigimonsByLevel],
+  );
 
   useEffect(() => {
-    getAllDigimons();
+    getAllDigimons(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Body>
-      <img src={IMAGES.logo} alt="logo digimon" />
+    <BaseLayout>
+      <Img src={IMAGES.logo} alt="logo digimon" />
       <Wrapper>
-        <InputSearch onClickSearch={handleSearch} placeholder="Busca" />
+        <InputSearch onClickSearch={handleSearch} placeholder="Busca" isLoading={loading} />
         <ButtonContainer>
-          <Button onClick={getAllDigimons}>Todos</Button>
-          {levels.map(level => (
-            <Button key={level} onClick={() => getAllDigimonByLevel(level)}>
-              {level}
-            </Button>
-          ))}
+          <LevelList
+            listLevels={listLevels}
+            levelSelected={levelSelected}
+            allDigimons={allDigimons}
+            loading={loading}
+            onClickLevel={handleClickLevel}
+          />
         </ButtonContainer>
       </Wrapper>
       <CardContainer>
         <DigimonList allDigimons={allDigimons} loading={loading} />
       </CardContainer>
-    </Body>
+    </BaseLayout>
   );
 }

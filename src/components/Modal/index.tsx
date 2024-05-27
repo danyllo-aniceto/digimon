@@ -1,3 +1,4 @@
+import { useTheme } from 'styled-components';
 import { IMAGES } from '../../assets';
 import {
   ModalWrapper,
@@ -22,13 +23,16 @@ function Modal({ onClose, digimon: { img, level, name } }: ModalProps) {
       onClose();
     }
   };
+
+  const { colors } = useTheme();
+
   return (
     <ModalWrapper onClick={handleWrapperClick}>
       <ModalContent>
         <TopModal>
           <Name>{name}</Name>
           <CloseButton onClick={onClose}>
-            <img src={IMAGES.close} alt="close modal" color="rgba(156, 156, 156, 1)" />
+            <img src={IMAGES.close} alt="close modal" color={colors.NEUTRAL_100} />
           </CloseButton>
         </TopModal>
         <ContentModal>

@@ -1,18 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledButton = styled.button`
-  background-color: rgba(217, 217, 217, 0.5);
-  color: rgba(255, 255, 255, 1);
-  width: 169px;
-  height: 68px;
-  border: none;
-  border: 1px solid rgba(255, 255, 255, 1);
-  border-radius: 20px;
-  font-size: 25px;
-  font-weight: 400;
-  transition: background-color 0.3s;
+interface IStyledButtonProps {
+  $isSelected: boolean;
+}
 
-  &:hover {
-    background-color: rgba(0, 140, 199, 1);
-  }
+export const StyledButton = styled.button<IStyledButtonProps>`
+  ${({ $isSelected, theme }) => css`
+    background-color: ${$isSelected ? theme.colors.BLUE : theme.colors.GRAY_500};
+    color: ${theme.colors.WHITE_NEUTRAL};
+    width: 169px;
+    height: 68px;
+    border: none;
+    border: 1px solid ${theme.colors.WHITE_NEUTRAL};
+    border-radius: 20px;
+    font-size: 25px;
+    font-weight: 400;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: ${theme.colors.BLUE};
+    }
+  `}
 `;

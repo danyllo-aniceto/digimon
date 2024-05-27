@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -6,7 +6,7 @@ export const ModalWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: ${({ theme }) => theme.colors.BLACK_800};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,16 +14,22 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  width: 687px;
-  height: 772px;
-  background-color: rgba(235, 235, 235, 1);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  ${({ theme }) => css`
+    width: 687px;
+    height: 772px;
+    background-color: ${theme.colors.NEUTRAL};
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px ${theme.colors.BLACK_100};
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ${theme.mediaQuery.mobile} {
+      height: 580px;
+    }
+  `}
 `;
 
 export const CloseButton = styled.button`
@@ -39,7 +45,7 @@ export const Name = styled.h2`
   font-weight: 700;
   line-height: 36.31px;
   text-align: left;
-  color: rgba(0, 140, 199, 1);
+  color: ${({ theme }) => theme.colors.BLUE};
 `;
 
 export const TopModal = styled.div`
@@ -62,14 +68,20 @@ export const ImageModal = styled.img`
   height: 363px;
   top: -250px;
   border-radius: 20px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px 0px #00000040;
+
+  ${({ theme }) => theme.mediaQuery.mobile} {
+    width: 210px;
+    height: 210px;
+    top: -80px;
+  }
 `;
 
 export const DescriptionModal = styled.div`
   width: 100%;
   height: 350px;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: ${({ theme }) => theme.colors.WHITE_NEUTRAL};
   padding: 32px 16px;
 
   display: flex;
@@ -89,22 +101,40 @@ export const LevelDigimon = styled.div`
 export const BluePoint = styled.div`
   width: 15px;
   height: 15px;
-  background: rgba(0, 140, 199, 1);
+  background: ${({ theme }) => theme.colors.BLUE};
   border-radius: 50%;
 `;
 
-export const NameLevel = styled.p`
+export const NameLevel = styled.h3`
   font-size: 30px;
   font-weight: 400;
-  color: rgba(156, 156, 156, 1);
+  color: ${({ theme }) => theme.colors.NEUTRAL_100};
 `;
 
 export const Description = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  color: rgba(156, 156, 156, 1);
+  ${({ theme }) => css`
+    font-size: 20px;
+    font-weight: 400;
+    color: ${theme.colors.NEUTRAL_100};
+
+    ${theme.mediaQuery.mobile} {
+      font-size: 16px !important;
+    }
+    ${theme.mediaQuery.mobileSm} {
+      font-size: 14px !important;
+    }
+  `}
 `;
 
 export const Span = styled.span`
-  color: rgba(39, 39, 39, 1);
+  ${({ theme }) => css`
+    color: ${theme.colors.BLACK_TEXT};
+
+    ${theme.mediaQuery.mobile} {
+      font-size: 16px !important;
+    }
+    ${theme.mediaQuery.mobileSm} {
+      font-size: 14px !important;
+    }
+  `}
 `;

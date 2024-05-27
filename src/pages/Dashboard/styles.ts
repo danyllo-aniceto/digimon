@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const Body = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 50px 0;
-`;
-
 export const Wrapper = styled.div`
   margin-top: 100px;
   display: flex;
@@ -33,4 +25,11 @@ export const CardContainer = styled.div`
   row-gap: 50px;
   column-gap: 37px;
   width: 100%;
+`;
+
+export const Img = styled.img`
+  ${({ theme }) => theme.mediaQuery.mobile} {
+    width: 245px;
+    height: 120px;
+  }
 `;
